@@ -1,6 +1,12 @@
 <!-- Author : Ping Tian-Sen Anthony & Tas Emine -->
 <?php
 include 'reservation.php';
+include 'exception.h'
+
+
+//Attributs
+
+$exception = new exception;
 
 /**
  * Check sesion status.
@@ -10,11 +16,12 @@ if (session_status() == PHP_SESSION_NONE) {
     
     session_start();
 	$reservation = new reservation;
+	$step=1;
 	
 }else {
 	
 	$reservation = unserialize($_SESSION['reservation']);
-	
+	$step = unserialize ($_SESSION['step']);
 }
 
 /**
@@ -26,7 +33,7 @@ if (isset($_POST['next'])) {
     $number = $_POST['number_of_places'];
     $destination = $_POST['destination'];
 
-    if ((!$reservation->isANumber($number)) || (!$reservation->isAString($destination))){
+    if ((!$exception->isANumber($number)) || (!$exception->isAString($destination))){
         
         $reservation->setIsError(true);
         
@@ -34,9 +41,7 @@ if (isset($_POST['next'])) {
 	}else {
 		
 		$reservation->setNumberOfPlaces($number);
-		//$reservation->setDestination($destination);
-        //$html  = '<a href="detailView.php">';
-        //echo $html;
+		$step = 2;
         
 		include 'detailView.php';
         

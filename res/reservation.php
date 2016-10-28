@@ -1,7 +1,9 @@
 <!-- Author : Ping Tian-Sen Anthony & Tas Emine -->
 <?php
 
- 
+include 'excepetion.h'
+
+   
    
    class reservation{
       
@@ -15,10 +17,8 @@
       {
          
          $this->numberOfPlaces = 0;
-         $this->destination = null;
-         $this->errorMesage = "Verify that the number of places is a number <br> and the destination is a string. <br>
-                               The specific caracter is not accepted.";
-  
+		 $errorMesage = new exception();
+      
       }
          
       public function getIsError()
@@ -44,67 +44,25 @@
       }
       
       
-      public function getHTML(){
-         return $this->html;
-      }
-      
       public function getErrorMesage(){
-         return $this->errorMesage;
+         return $this->errorMesage->getErrorMesage();
       }
+	  
+	  public function setErrorMesage($error){
+		  $this->errorMesage->setErrorMesage($error);
+	  }
       
       public function setNumberOfPlaces($number)
       {
          $this->numberOfPlaces = $number;
       }
-      
-      public function setDestination($destination)
-      {
-         $this->destination = $destination;
-      }
-      
-      public function isANumber($number)
-      {
-         $isNumber = false;
-         if(is_numeric($number)){
-            $isNumber = true;
-         }
-         return $isNumber;
-      }
+	  
+	  public function setDestination($dest)
+	  {
+		$this->  destination=$dest;
+	  }
       
       
-      public function isAString($string){
-         $isEmpty = true;
-         if(empty($string)){
-            $isEmpty = false;
-         }
-         return $isEmpty;
-      }
-      
-      
-      public function createPersonLabel()
-      {
-         if ($this->number !=0) {
-            
-            for ($counter = 0 ; $counter <$number ; $counter ++) {
-                $this->html.= '<label for="name">Nom  :</label> <input type="text" name="name[]" / ><br>
-                               <label for="ages">Age  :</label> <input type="text" name="ages[]" / ><br><br>';                             
-             }
-             
-             $this->html.= '</div>';
-             $this->html.= '<br><input type="submit" value="Etape suivante" />
-             <input type="submit" value="Retour à la page précédente" />
-             <input type="submit" value="Annuler la reservation" />';
-             $this->html.= '</form>';
-             $this->html.= '</body> </html>';
-          
-         }
-      }
-      
-      
-      public function getDisplay()
-      {
-         echo $html;
-      }
    }
 
 ?>
