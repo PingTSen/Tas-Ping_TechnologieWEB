@@ -1,6 +1,7 @@
+<!-- Author : Ping Tian-Sen Anthony & Tas Emine -->
 <?php
 
-   session_start();
+ 
    
    class reservation{
       
@@ -12,25 +13,12 @@
       
       public function __construct()
       {
-         $this->html = '<!DOCTYPE html>
-                   <html>
-                   <meta charset="UTF-8"/>
-                       <head>
-                           <title> DETAIL </title>
-                           <h1> Détail réservation </h1>
-                           <style>'.file_get_contents(__DIR__.'/styles.css').'</style>
-                       </head>
-                       <body>
-                       <div id="container">
-                       <form method="post" action="controls.php">';
+         
          $this->numberOfPlaces = 0;
+         $this->destination = null;
          $this->errorMesage = "Verify that the number of places is a number <br> and the destination is a string. <br>
                                The specific caracter is not accepted.";
-      //   if($this->isANumber($nbPlaces)){
-      //      $this->number = $nbPlaces;
-      //   }else{
-      //      $errorMesage = "The number of places is not a number.";
-      //   }
+  
       }
          
       public function getIsError()
@@ -64,11 +52,15 @@
          return $this->errorMesage;
       }
       
-      public function setGetNumberOfPlaces($number)
+      public function setNumberOfPlaces($number)
       {
          $this->numberOfPlaces = $number;
       }
       
+      public function setDestination($destination)
+      {
+         $this->destination = $destination;
+      }
       
       public function isANumber($number)
       {
