@@ -1,21 +1,55 @@
 <?php
 include 'reservation.php';
+include 'main.php'
+
+
+// Attributs
+
+
 if (session_status() == PHP_SESSION_NONE) {
     
     session_start();
+	$reservation = new reservation;
+	
+}else {
+	
+	$_SESSION['reservation'] = unserialize($reservation);
+	
 }
-// Attributs
 
-$reservation = new reservation;
-$number = $_POST['number_of_places'];
+
+
+
+if (isset($_POST['next'])) {
+ $number = $_POST['number_of_places'];
 $destination = $_POST['destination'];
-$isError = ((!$reservation->isANumber($number)) || (!$reservation->isAString($destination)));
-$reservation->setIsError($isError);
+    if ((!$reservation->isANumber($number)) || (!$reservation->isAString($destination))){
+    $reservation->setIsError(true);
+	}else {
+		
+		$reservation->setNumberOfPlaces($number);
+		$reservation->setDestination($destination);
+		
+	}
+	
+ 
+} elseif (isset($_POST['cancel'])) {
+ 
+    header("Refresh:0; url=main.php");
+ 
+} else {
+ 
+    header("Refresh:0; url=main.php");
+ 
+}
+
+
+
+
+
+
+
 $_SESSION['reservation'] = serialize($reservation);
-    // echo '<script language="javascript">';
-    // echo 'alert('.$reservation->getErrorMesage().')'; 
-    // echo '</script>';
-    //echo $reservation->getErrorMesage();
-    //echo "<script> alert('".$reservation->getErrorMesage()."') \"></script<br>";
+
 
 ?>
