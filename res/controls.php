@@ -1,12 +1,14 @@
 <!-- Author : Ping Tian-Sen Anthony & Tas Emine -->
 <?php
+
 include 'reservation.php';
-include 'exception.h'
+include 'exception_.php';
 
 
 //Attributs
 
-$exception = new exception;
+$exception = new exception_;
+
 
 /**
  * Check sesion status.
@@ -24,8 +26,10 @@ if (session_status() == PHP_SESSION_NONE) {
 	$step = unserialize ($_SESSION['step']);
 }
 
+
+
 /**
- * Manage event.
+ * Manage bouton event
  **/
 
 if (isset($_POST['next'])) {

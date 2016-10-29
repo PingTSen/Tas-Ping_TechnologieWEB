@@ -1,15 +1,16 @@
 <!-- Author : Ping Tian-Sen Anthony & Tas Emine -->
 <?php
 
-include 'excepetion.h'
 
-   
+   /**
+	*Reservation model class
+	*This class manage the reservation 
+   */
    
    class reservation{
       
       private $html;
       private $numberOfPlaces;
-      private $errorMesage;
       private $destination;
       private $isError;
       
@@ -17,7 +18,7 @@ include 'excepetion.h'
       {
          
          $this->numberOfPlaces = 0;
-		 $errorMesage = new exception();
+		 $errorMessage = new exception();
       
       }
          
@@ -44,13 +45,6 @@ include 'excepetion.h'
       }
       
       
-      public function getErrorMesage(){
-         return $this->errorMesage->getErrorMesage();
-      }
-	  
-	  public function setErrorMesage($error){
-		  $this->errorMesage->setErrorMesage($error);
-	  }
       
       public function setNumberOfPlaces($number)
       {

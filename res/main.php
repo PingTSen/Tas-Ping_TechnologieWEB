@@ -1,4 +1,8 @@
 <!-- Author : Ping Tian-Sen Anthony & Tas Emine -->
+
+<!--View of the reservation-->
+
+
 <!DOCTYPE html>
                
 
@@ -9,7 +13,7 @@
                 <h1>     RESERVATION   </h1>
                
                <!-- <style>file_get_contents(__DIR__.'/styles.css')</style> -->
-               <?php if($reservation->getIsError()){echo $reservation->getErrorMesage();}?>
+               <?php if($reservation->getIsError()){echo $exception->getErrorMessage();}?>
         </head>
         <body>
                 <p> Le prix de la place est de 10 euros jusqu'à 12 ans et ensuite de 15 euros.</p>

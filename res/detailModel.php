@@ -1,7 +1,10 @@
 <?php
 
 include 'people.php'
-include 'exception.php'
+include 'exception_.php'
+
+/* Information model class
+This class get all the data about the people who are part of the reservation */
 
    class detail{
 	   

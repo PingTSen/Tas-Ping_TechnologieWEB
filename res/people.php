@@ -1,5 +1,8 @@
 <?php
 
+ /* Class for a people
+ This class has all the info about one personne */
+
    class people{
 	   
 	   private $age;
