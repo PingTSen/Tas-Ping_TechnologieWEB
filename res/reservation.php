@@ -18,6 +18,7 @@
       {
          
          $this->numberOfPlaces = 0;
+		 $destionation='';
 		 $errorMessage = new exception();
       
       }

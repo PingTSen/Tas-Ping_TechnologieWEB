@@ -12,7 +12,7 @@
                <p> </p>
                <p> </p><br>
                <div id="container"> 
-               <form method="post" action="detailControls.php">
+               <form method="post" action="controls.php">
                     <?php for($i=1; $i<=$reservation->getNumberOfPlaces(); $i++)
                           {
                               $html = '<label for="Name">   Nom     :</label> <input type="text" name="nom[]" / >   <br> ';
@@ -21,9 +21,9 @@
                           }   
                     ?>    
                </div><br>
-               <input type="submit" name = 'next' value="Etape suivante" / >
-               <input type="submit" name = 'Retour à la page précédente' value="Retour à la page précédente" / >
-               <input type="submit" name = 'cancel' value="Annuler la resérvation" / >
+               <input type="submit" name = 'nextD' value="Etape suivante" / >
+               <input type="submit" name = 'previousD' value="Retour à la page précédente" / >
+               <input type="submit" name = 'cancelD' value="Annuler la resérvation" / >
 
                </form>
           </body>      

@@ -13,7 +13,7 @@
 	   {
 		   
 		   $this->$name = $age;
-		   &this->name=$name;
+		   $this->name=$name;
 		   
 		   
 	   }

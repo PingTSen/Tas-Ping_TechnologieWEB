@@ -1,7 +1,6 @@
 <?php
 
-include 'people.php'
-include 'exception_.php'
+include 'people.php';
 
 /* Information model class
 This class get all the data about the people who are part of the reservation */
@@ -11,7 +10,7 @@ This class get all the data about the people who are part of the reservation */
 	   private $numberPeople;
 	   private $name;
 	   private $age;
-	   private $people[];
+	   private $people;
 	   
 	   
 	   public function __construct($nb)

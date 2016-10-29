@@ -11,7 +11,7 @@ class exception_ {
 	
 	public function __construct()
 	{
-		 $err = "Verify that the number of places is a number <br> and the destination is a string. <br>
+		 $err = "Verify that the number of places is a number and greater than 0 <br> The destination must be a string. <br>
                                The specific caracter is not accepted.";
 			$this->errorMessage=new message_($err);
 			
@@ -32,7 +32,7 @@ class exception_ {
 	 public function isANumber($number)
       {
          $isNumber = false;
-         if(is_numeric($number)){
+         if(is_numeric($number) && ($number>0)){
             $isNumber = true;
          }
          return $isNumber;
