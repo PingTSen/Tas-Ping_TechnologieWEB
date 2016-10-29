@@ -2,11 +2,7 @@
 
 <!--View of the reservation-->
 
-<?php
-$res = unserialize ($_SESSION['reservation']);
-$number = $res->getNumberOfPlaces();
-$destination = $res->getDestination();
-?>
+
 <!DOCTYPE html>
                
 
@@ -17,7 +13,7 @@ $destination = $res->getDestination();
                 <h1>     RESERVATION   </h1>
                
                <!-- <style>file_get_contents(__DIR__.'/styles.css')</style> -->
-               <?php if($res->getIsError()){echo $exception->getErrorMessage();}?>
+               <?php if($reservation->getIsError()){echo $exception->getErrorMessage();}?>
         </head>
         <body>
                 <p> Le prix de la place est de 10 euros jusqu'à 12 ans et ensuite de 15 euros.</p>
@@ -27,12 +23,12 @@ $destination = $res->getDestination();
 				
                         <label for="destination">   Destination          :</label> 
 						<input type="text" name="destination" 
-						value="<?php echo htmlspecialchars($destination); ?>" / >      <br>  
+						value="<?php echo htmlspecialchars($reservation->getDestination()); ?>" / >      <br>  
                         <!-- htmlspecialchars for XSS protection -->
 
 						<label for="number_Places"> Nombre de places     :</label>
 						<input type="text" name="number_of_places"
-						 value="<?php echo htmlspecialchars($number); ?>" / > <br>
+						 value="<?php echo htmlspecialchars($reservation->getNumberOfPlaces()); ?>" / > <br>
                         
 						<label for="insurance">     Assurance annulation :</label> 
 						<input type="checkbox" name="insurance" / >    <br>
