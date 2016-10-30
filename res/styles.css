@@ -1,3 +1,71 @@
+@font-face { /* Définition d'une nouvelle police nommée LearningCurveProRegular */
+    font-family: 'Sketch_Block';
+    src: url('Sketch_Block.eot');
+    src: url('Sketch_Block.eot?#iefix') format('embedded-opentype'),
+         url('Sketch_Block.woff') format('woff'),
+         url('Sketch_Block.ttf') format('truetype'),
+         url('Sketch_Block.svg#LearningCurveProRegular') format('svg');
+}
+
+h1
+{
+	color: #006A5C;
+	font-family: Impact;
+    font-family: 'Sketch_Block', Arial, serif;
+	font-size: 60px;
+	text-shadow: 2px 2px 4px #000000;
+	
+}
+
+a.button{
+	background:url(picture/go.gif);*/
+	display:block;
+	color:#000000;
+	font-weight:bold;
+	height:30px;
+	line-height:29px;
+	margin-bottom:24px;
+	margin-right: 70px;
+	text-decoration:none;
+	width:100px;
+	font-size :90%;
+}
+
+a:hover.button{
+	color:#FE0000;
+	/*text-decoration: underline;*/
+	font-size: 100%;
+}
+
+/*The 'next' button*/							
+.nextR
+{
+	text-indent:30px;
+	
+}
+
+/*'Annuler' button*/
+.cancelR
+{
+	text-indent:30px;
+	
+}
+
+/*The beige box on he center*/
+#container
+{
+    padding: 10px;
+    /* border: 1px solid #666; */
+    background: #ffffBf;
+	border-radius: 15px;
+	font-family: 'Sketch_Block', Arial, serif;
+	font-size: small;
+	box-shadow: 6px 6px 0px #006A5C;
+	text-shadow: 2px 2px 4px #006A5C;
+opacity: 0.8;
+}
+
+/*For align the text box*/
 label
 {
 	display: block;
@@ -5,14 +73,30 @@ label
 	float: left;
 }
 
-#container
+
+section
 {
-     padding: 10px;
-     width:  35%;
-     border: 1px solid #666;
-     background: #ffffBf;
+	color: black;
+	width: 450px;
+	margin: auto;
+/*	border-radius: 1px solid black;*/
+	text-align: justify;
+	padding: 12px;
+	margin-bottom: 20px;
+	margin-top : 90px;
+	font-family: 'Sketch_Block', Arial, serif;
+	font-size: large;
+	text-shadow: 2px 2px 4px #006A5C;
 }
 
+body
+{
+	color:black;
+	background-image:url(picture/pic2.jpg);
+	background-size: 100%;
+	margin:0;
+ /*text-align: center; */ 
+}
 
 
 

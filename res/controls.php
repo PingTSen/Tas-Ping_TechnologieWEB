@@ -69,6 +69,7 @@ if (isset($_POST['nextR'])) {
 }
 
 $_SESSION['step'] = serialize($step);
+
 switch ($step){
 	
 	case 1 : include 'main.php'; break;
