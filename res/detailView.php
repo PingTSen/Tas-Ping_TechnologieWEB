@@ -50,7 +50,7 @@
 				<label >
 						<span class="cancelR">
 								Annuler la réservation
-								<input type="submit" name = 'previousD'  style="display:none"  />
+								<input type="submit" name = 'cancel'  style="display:none"  />
 						</span>
 				</label>
 				</a>

@@ -51,7 +51,7 @@
 				<label >
 						<span class="cancelR">
 								Annulation
-								<input type="submit" name = 'cancelR'  style="display:none"  />
+								<input type="submit" name = 'cancel'  style="display:none"  />
 						</span>
 				</label>
 				</a>

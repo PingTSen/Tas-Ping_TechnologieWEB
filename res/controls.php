@@ -17,14 +17,15 @@ $detail;
  * Check sesion status.
 */
 
-if (!isset($_SESSION["res"])) {
+if (!isset($_SESSION["reservation"])) {
 	
     $reservation = new reservation;
     $_SESSION['reservation'] = serialize($reservation);
 	
 } else {
+	
     $reservation = unserialize($_SESSION['reservation']);
-	$detail = unserialize($_SESSION['detail']);
+	//$detail = unserialize($_SESSION['detail']);
 }
 
 
@@ -41,9 +42,14 @@ if (isset($_POST['nextR'])) {
 	
         $reservation->setNumberOfPlaces($number);
 		$reservation->setDestination($destination);
+		if(isset($_POST['insurance'])){
+			$reservation->setIsInsured(true);
+		}
 	    $_SESSION['reservation'] = serialize($reservation);		
 		$detail = new detail($reservation->getNumberOfPlaces());
 		$_SESSION['detail'] = serialize($detail);
+		
+		
 
 		
 		$step = 2;  
@@ -57,10 +63,10 @@ if (isset($_POST['nextR'])) {
 	}
 	
  
-} elseif (isset($_POST['cancelR'])) {
-		//session_destroy();
-		 $reservation     = new Reservation;
-		 $_SESSION['reservation'] = serialize($reservation);
+} elseif (isset($_POST['cancel'])) {
+	    $reservation->setNumberOfPlaces(0);
+		$reservation->setDestination("Paris");
+		session_destroy();
 		$step=1;
  
 } elseif (isset($_POST['nextD'])){
@@ -90,7 +96,7 @@ if (isset($_POST['nextR'])) {
 	
 		$reservation = unserialize($_SESSION['reservation']);
 		echo $reservation->getNumberOfPlaces();
-		$step=4;
+		$step=1;
 	
 }elseif (isset($_POST['validate'])){
 	
@@ -112,9 +118,10 @@ switch ($step){
 		;break;
 		
 	case 3 :
-		     
+		     $reservation = unserialize($_SESSION['reservation']);
 		     $detail = unserialize($_SESSION['detail']);
 			 $detail->getListPeople();
+			 echo $reservation->getIsInsured();
 	
 	;break;
 

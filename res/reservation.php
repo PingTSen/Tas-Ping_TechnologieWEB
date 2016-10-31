@@ -16,13 +16,14 @@ include 'message_.php';
       private $destination;
       private $isError;
 	  private $errorMessage;
+	  private $isAssured;
       
       public function __construct()
       {
          
          $this->numberOfPlaces = 0;
 		 $this->destination="Paris";
-		 
+		 $this->isAssured=false;
 		 $err = "Verify that the number of places field is a number and greater than 0 and below 10<br>
 				The destination field must not be empty. <br>
                 The specific caracter is not accepted.";
@@ -69,12 +70,25 @@ include 'message_.php';
 		$this->  destination=$dest;
 	  }
       
+	  public function getIsInsured(){
+		  
+		  return $this->isAssured;
+	  }
+	  
+	  public function setIsInsured($b){
+		  
+		  $this->isAssured=$b;
+		  
+	  }
+	  
 	  public function __destruct ()
 	  {
 
 		$this->numberOfPlaces=0;
 		$this->destination="Paris";
-	}
+		$this->isAssured = false;
+	  
+	  }
       
    }
 
