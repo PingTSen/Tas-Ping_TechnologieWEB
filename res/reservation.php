@@ -1,6 +1,8 @@
 <!-- Author : Ping Tian-Sen Anthony & Tas Emine -->
 <?php
 
+include 'message_.php';
+
 
    /**
 	*Reservation model class
@@ -13,13 +15,20 @@
       private $numberOfPlaces;
       private $destination;
       private $isError;
+	  private $errorMessage;
       
       public function __construct()
       {
          
          $this->numberOfPlaces = 0;
-		 $destionation='';
-		 $errorMessage = new exception();
+		 $this->destination="Paris";
+		 
+		 $err = "Verify that the number of places field is a number and greater than 0 <br>
+				The destination field must not be empty. <br>
+                The specific caracter is not accepted.";
+				
+		 $this->errorMessage=new message_($err);
+		 
       
       }
          
@@ -32,7 +41,10 @@
       {
          $this->isError = $error;
       }
-         
+      
+	  public function getErrorMessage(){
+		  return $this->errorMessage->getMessage();
+	  }
          
       public function getNumberOfPlaces()
       {
@@ -57,6 +69,12 @@
 		$this->  destination=$dest;
 	  }
       
+	  public function __destruct ()
+	  {
+
+		$this->numberOfPlaces=0;
+		$this->destination="Paris";
+	}
       
    }
 

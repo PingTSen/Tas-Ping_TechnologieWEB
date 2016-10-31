@@ -14,7 +14,7 @@
                <!-- <style>file_get_contents(__DIR__.'/styles.css')</style>-->
 				<link rel="stylesheet" href='styles.css' /> 
 			    <span class="errorMessage">
-			   <?php if($reservation->getIsError()){echo $exception->getErrorMessage();}?>
+			   <?php if($reservation->getIsError()){echo $reservation->getErrorMessage();}?>
 				</span>
         </head>
         <body>
@@ -51,7 +51,7 @@
 				<label >
 						<span class="cancelR">
 								Annulation
-								<input type="submit" name = 'CancelR'  style="display:none"  />
+								<input type="submit" name = 'cancelR'  style="display:none"  />
 						</span>
 				</label>
 				</a>

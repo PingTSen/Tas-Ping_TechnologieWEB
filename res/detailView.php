@@ -6,7 +6,11 @@
           <head>
                <title>  DETAILS DES RESERVATIONS   </title>
                <h1>     DETAILS DES RESERVATIONS   </h1>
-               <link rel="stylesheet" href='styles.css' /> 
+               <link rel="stylesheet" href='styles.css' />
+			   <span class="errorMessage">
+			   <?php if($detail->getIsError()){echo $detail->getErrorMessage();}?>
+			   </span>
+			   
           </head>
           
           <body>
@@ -14,7 +18,9 @@
                <p> </p><br>
                <div id="container"> 
                <form method="post" action="controls.php">
-                    <?php for($i=1; $i<=$reservation->getNumberOfPlaces(); $i++)
+			
+                    <?php 
+					for($i=1; $i<=$reservation->getNumberOfPlaces(); $i++)
                           {
                               $html = '<label for="Name">   Nom     :</label> <input type="text" name="nom[]" / >   <br> ';
                               $html.= '<label for="Age">    Age     :</label> <input type="text" name="age[]" / >   <br> ';
@@ -26,7 +32,7 @@
 				<label>
 						<span class="nextR" >
 								Etape suivante
-								<input type="submit" name = 'nextR'  style="display:none" />
+								<input type="submit" name = 'nextD'  style="display:none" />
 								<!--<input type="submit" name = 'cancelR' value="Annuler la reservation" / >-->
 						</span>
 				</label>
@@ -35,7 +41,7 @@
 				<label >
 						<span class="beforePage">
 								Retour à la page précédente
-								<input type="submit" name = 'beforePage'  style="display:none"  />
+								<input type="submit" name = 'previousD'  style="display:none"  />
 						</span>
 				</label>
 				</a>
@@ -44,12 +50,13 @@
 				<label >
 						<span class="cancelR">
 								Annuler la réservation
-								<input type="submit" name = 'CancelR'  style="display:none"  />
+								<input type="submit" name = 'previousD'  style="display:none"  />
 						</span>
 				</label>
 				</a>
 
                </form>
+			 
           </body>      
 
 </html>
