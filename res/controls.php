@@ -6,6 +6,7 @@ session_start();
 include 'reservation.php';
 include 'exception_.php';
 include 'detailModel.php';
+include 'validateModel.php';
 
 
 //Attributs
@@ -44,7 +45,7 @@ if (isset($_POST['nextR'])) {
 		$reservation->setDestination($destination);
 		if(isset($_POST['insurance'])){
 			$reservation->setIsInsured(true);
-		}else{
+		}else {
 			$reservation->setIsInsured(false);
 		}
 	    $_SESSION['reservation'] = serialize($reservation);		
@@ -82,8 +83,8 @@ if (isset($_POST['nextR'])) {
 	    if ($exception->isNameOk($listName,$number) && $exception->isAValidAge($listAge,$number)){
 			
 			$detail->createPeople($listName,$listAge);
+		    $_SESSION['reservation'] = serialize($reservation);		
 			$_SESSION['detail'] = serialize($detail);
-			$_SESSION['reservation'] = serialize($reservation);
 			$step=3;
 			
 		}else {
@@ -98,11 +99,17 @@ if (isset($_POST['nextR'])) {
 }  elseif (isset($_POST['previousD'])){
 	
 		$reservation = unserialize($_SESSION['reservation']);
-		echo $reservation->getNumberOfPlaces();
 		$step=1;
 	
 }elseif (isset($_POST['validate'])){
-		$step=3;
+	
+	$step=4;
+	
+	
+}elseif (isset ($_POST['previousV'])){
+	
+		$detail=unserialize($_SESSION['detail']);
+		$step=2;
 	
 }
 
@@ -123,11 +130,19 @@ switch ($step){
 	case 3 :
 		     $reservation = unserialize($_SESSION['reservation']);
 		     $detail = unserialize($_SESSION['detail']);
-			// $detail->getListPeople();
-			// echo $reservation->getIsInsured();
 			 include 'validationView.php';
+	
 	;break;
 
+	case 4: 
+	$val = new validate;
+    $detail = unserialize($_SESSION['detail']);
+    $reservation = unserialize($_SESSION['reservation']);
+  	$val->calculate($detail->getListPeople());
+	$val->isInssured($reservation->getIsInsured());
+	echo 'le prix';
+	echo $val->getPrices();
+	;break;
 	
 
 }

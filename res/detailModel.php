@@ -44,7 +44,7 @@ This class get all the data about the people who are part of the reservation */
 	   {
 		   return $this->people;
 	   }
-	   
+	    
 	   
 		
 		public function getIsError()
@@ -63,6 +63,7 @@ This class get all the data about the people who are part of the reservation */
 		  return $this->errorMessage->getMessage();
 		  
 	  }
+	  
 	  
 	  
 	   

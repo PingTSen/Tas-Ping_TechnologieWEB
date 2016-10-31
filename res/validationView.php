@@ -6,7 +6,8 @@
                 <title>  VALIDATION DES RESERVATIONS   </title>
                 <h1>     VALIDATION DES RESERVATIONS   </h1>
 				<link rel="stylesheet" href='styles.css' /> 
- 
+		</head>
+        <body>
                 <?php
 				
                     echo '<tr>'."Destination  ".'&nbsp&nbsp&nbsp'.$reservation->getDestination().'</tr></br>';
@@ -24,11 +25,14 @@
 						echo "NON".'<br><br><br>';
 					}
 				?>
+				
+				
+				<form method="post" action="controls.php">
 				<a href="#" class="button">
 				<label>
 						<span class="confirme" >
 								Confirmer
-								<input type="submit" name = 'confirme'  style="display:none" />
+								<input type="submit" name = 'validate'  style="display:none" />
 						</span>
 				</label>
 				</a>
@@ -36,7 +40,7 @@
 				<label>
 						<span class="beforePage" >
 								Retour à la page précédente
-								<input type="submit" name = 'beforePage'  style="display:none" />
+								<input type="submit" name = 'previousV'  style="display:none" />
 						</span>
 				</label>
 				</a>
@@ -48,10 +52,8 @@
 						</span>
 				</label>
 				</a>              
-                
-        </head>
-
-        <body>
+                </form>
+       
         </body>
 
 </html>

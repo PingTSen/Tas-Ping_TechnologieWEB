@@ -5,9 +5,10 @@
 
    class people{
 	   
-	   private $age;
-	   private $name;
+	   private $age=0;
+	   private $name=" ";
 	   
+
 	   
 	   public function __construct($age,$name)
 	   {

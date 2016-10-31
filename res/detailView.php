@@ -20,13 +20,22 @@
                <form method="post" action="controls.php">
 			
                     <?php 
-					for($i=1; $i<=$reservation->getNumberOfPlaces(); $i++)
+					$listPeople=$detail->getListPeople();
+					$name = " ";
+					$age=0;
+					for($i=0; $i<$reservation->getNumberOfPlaces(); $i++)
                           {
-                              $html = '<label for="Name">   Nom     :</label> <input type="text" name="nom[]" / >   <br> ';
-                              $html.= '<label for="Age">    Age     :</label> <input type="text" name="age[]" / >   <br> ';
+							  if($listPeople != null){
+								  $name=$listPeople[$i]->getName();
+								  $age=$listPeople[$i]->getAge();
+							  }
+							  
+                              $html = '<label for="Name">   Nom     :</label> <input type="text" name="nom[]" value='.$name.' >   <br> ';
+                              $html.= '<label for="Age">    Age     :</label> <input type="text" name="age[]" value='.$age.' >   <br> ';
                               echo $html;
                           }   
-                    ?>    
+                    ?>
+					
                </div><br>
 				<a href="#" class="button">
 				<label>
