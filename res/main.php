@@ -12,8 +12,10 @@
                 <title>  RESERVATION   </title>
                 <h1>     RESERVATION   </h1>
                <!-- <style>file_get_contents(__DIR__.'/styles.css')</style>-->
-				 <link rel="stylesheet" href='styles.css' /> 
-               <?php if($reservation->getIsError()){echo $exception->getErrorMessage();}?>
+				<link rel="stylesheet" href='styles.css' /> 
+			    <span class="errorMessage">
+			   <?php if($reservation->getIsError()){echo $exception->getErrorMessage();}?>
+				</span>
         </head>
         <body>
 		      

@@ -6,6 +6,7 @@
           <head>
                <title>  DETAILS DES RESERVATIONS   </title>
                <h1>     DETAILS DES RESERVATIONS   </h1>
+               <link rel="stylesheet" href='styles.css' /> 
           </head>
           
           <body>
@@ -21,9 +22,32 @@
                           }   
                     ?>    
                </div><br>
-               <input type="submit" name = 'nextD' value="Etape suivante" / >
-               <input type="submit" name = 'previousD' value="Retour à la page précédente" / >
-               <input type="submit" name = 'cancelD' value="Annuler la resérvation" / >
+				<a href="#" class="button">
+				<label>
+						<span class="nextR" >
+								Etape suivante
+								<input type="submit" name = 'nextR'  style="display:none" />
+								<!--<input type="submit" name = 'cancelR' value="Annuler la reservation" / >-->
+						</span>
+				</label>
+				</a>
+               <a href="#" class="button">
+				<label >
+						<span class="beforePage">
+								Retour à la page précédente
+								<input type="submit" name = 'beforePage'  style="display:none"  />
+						</span>
+				</label>
+				</a>
+                            
+               <a href="#" class="button">
+				<label >
+						<span class="cancelR">
+								Annuler la réservation
+								<input type="submit" name = 'CancelR'  style="display:none"  />
+						</span>
+				</label>
+				</a>
 
                </form>
           </body>      
