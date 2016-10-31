@@ -41,6 +41,7 @@ if (isset($_POST['nextR'])) {
 	
         $reservation->setNumberOfPlaces($number);
 		$reservation->setDestination($destination);
+	    $_SESSION['reservation'] = serialize($reservation);		
 		$detail = new detail($reservation->getNumberOfPlaces());
 		$_SESSION['detail'] = serialize($detail);
 
@@ -48,6 +49,7 @@ if (isset($_POST['nextR'])) {
 		$step = 2;  
     
 	}else {
+		
 		$reservation->setNumberOfPlaces(0);
 		$reservation->setDestination("Paris");
 		$reservation->setIsError(true);
@@ -56,8 +58,9 @@ if (isset($_POST['nextR'])) {
 	
  
 } elseif (isset($_POST['cancelR'])) {
-		$reservation     = new Reservation;
-		$_SESSION['reservation'] = serialize($reservation);
+		//session_destroy();
+		 $reservation     = new Reservation;
+		 $_SESSION['reservation'] = serialize($reservation);
 		$step=1;
  
 } elseif (isset($_POST['nextD'])){
@@ -65,10 +68,14 @@ if (isset($_POST['nextR'])) {
 		$listName = $_POST['nom'];
 		$listAge = $_POST ['age'];
 		$reservation = unserialize($_SESSION['reservation']);
+		$detail = unserialize($_SESSION['detail']);
 		$number=$reservation->getNumberOfPlaces();
 		
-	    if ($exception->isNameOk($listName,$number) && $exception->isAValideAge($listAge,$number)){
+	    if ($exception->isNameOk($listName,$number) && $exception->isAValidAge($listAge,$number)){
 			
+			$detail->createPeople($listName,$listAge);
+			$_SESSION['detail'] = serialize($detail);
+			$step=3;
 			
 		}else {
 			
@@ -78,12 +85,15 @@ if (isset($_POST['nextR'])) {
 		}
 	    
 		
-		
-		
 	
 }  elseif (isset($_POST['previousD'])){
-		
-		$step=1;
+	
+		$reservation = unserialize($_SESSION['reservation']);
+		echo $reservation->getNumberOfPlaces();
+		$step=4;
+	
+}elseif (isset($_POST['validate'])){
+	
 	
 }
 
@@ -98,11 +108,15 @@ switch ($step){
 	
 	case 2 :
 	
-		$_SESSION['reservation'] = serialize($reservation);		
 		include 'detailView.php';		
 		;break;
 		
-	case 3 :;break;
+	case 3 :
+		     
+		     $detail = unserialize($_SESSION['detail']);
+			 $detail->getListPeople();
+	
+	;break;
 
 	
 

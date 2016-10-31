@@ -12,7 +12,7 @@
 	   public function __construct($age,$name)
 	   {
 		   
-		   $this->$name = $age;
+		   $this->age = $age;
 		   $this->name=$name;
 		   
 		   
@@ -20,22 +20,22 @@
 	   
 	   public function getName()
 	   {
-		   return $this->$name;
+		   return $this->name;
 	   }
 	   
 	   public function getAge()
 	   {
-		   return $this->$age;
+		   return $this->age;
 	   }
 	   
 	   public function setName($name)
 	   {
-		   $this->$name=$name;
+		   $this->name=$name;
 	   }
 	   
 	   public function setAge($age)
 	   {
-		    $this->$age=$age;
+		    $this->age=$age;
 	   }
    }
 

@@ -10,7 +10,7 @@ class exception_ {
 	 public function isANumber($number)
       {
          
-         return (is_numeric($number) && ($number>0));
+         return (is_numeric($number) && ($number>0 && $number <10));
       }
       
       
@@ -22,23 +22,26 @@ class exception_ {
 	  public function isAValidAge($listAge,$numberPeople){
 		  $isOk=true;
 		  $i=0;
-			while($i<numberPeople && ($isOk) ){
-				echo 'while';
+			while($i<$numberPeople && ($isOk) ){
+				
+				$number=$listAge[$i];
 				$isOk=(is_numeric($number) && ($number > 0 && $number < 120));
+					
+				$i++;
 			}
 			
-			return $this->isOk;
+			return $isOk;
 		}
 		   	  
 	  
 	   public function isNameOk($listName,$numberPeople){
-			echo 'entrer';
-			echo $numberPeople;
+			
 			$isOk=true;
 			$i=0;
 			while($i<$numberPeople && ($isOk) ){
-				echo 'while';
+				
 				$isOk=!($this->isEmpty($listName[$i]));
+				$i++;
 			}
 			
 			return $isOk;

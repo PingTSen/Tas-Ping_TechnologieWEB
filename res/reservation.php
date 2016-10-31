@@ -23,7 +23,7 @@ include 'message_.php';
          $this->numberOfPlaces = 0;
 		 $this->destination="Paris";
 		 
-		 $err = "Verify that the number of places field is a number and greater than 0 <br>
+		 $err = "Verify that the number of places field is a number and greater than 0 and below 10<br>
 				The destination field must not be empty. <br>
                 The specific caracter is not accepted.";
 				

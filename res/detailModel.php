@@ -33,16 +33,22 @@ This class get all the data about the people who are part of the reservation */
 	   
 	   public function createPeople($listName,$listAge){
 		 
-		 for($i=0;$i<$this->$numberPeople;$i++){
+		 for($i=0;$i<$this->numberPeople;$i++){
 				
-				$this->people[$i] = new people($listName.$i,$listAge.$i);
+				$this->people[$i] = new people($listAge[$i],$listName[$i]);
 		 }
 		
 	   }
 	   
 	   public function getListPeople()
 	   {
-		   return $this->$people;
+		   foreach($this->people as $people){
+		   echo $people->getName() ;
+		   echo "\r\n";
+		   echo $people->getAge();
+		   echo "<br>";
+		   
+		   }
 	   }
 	   
 	   
