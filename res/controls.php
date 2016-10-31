@@ -140,8 +140,8 @@ switch ($step){
     $reservation = unserialize($_SESSION['reservation']);
   	$val->calculate($detail->getListPeople());
 	$val->isInssured($reservation->getIsInsured());
-	echo 'le prix';
-	echo $val->getPrices();
+	$_SESSION['price'] = serialize($val);		
+	include 'confirmationView.php';
 	;break;
 	
 
