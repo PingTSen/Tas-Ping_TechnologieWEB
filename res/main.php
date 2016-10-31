@@ -34,8 +34,7 @@
 						 value="<?php echo htmlspecialchars($reservation->getNumberOfPlaces()); ?>" / > <br>
                         
 						<label for="insurance">     Assurance annulation :</label> 
-						<input type="checkbox" name="insurance" / >    <br>
-						<input type="hidden" id="nextR" value="1"/>
+						<input type="checkbox" name="insurance" />    <br>
 						
                 </div><br>
 				<a href="#" class="button">

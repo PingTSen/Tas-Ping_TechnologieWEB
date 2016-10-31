@@ -67,7 +67,7 @@ include 'message_.php';
 	  
 	  public function setDestination($dest)
 	  {
-		$this->  destination=$dest;
+		$this->destination=$dest;
 	  }
       
 	  public function getIsInsured(){

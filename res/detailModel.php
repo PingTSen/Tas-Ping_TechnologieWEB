@@ -42,13 +42,7 @@ This class get all the data about the people who are part of the reservation */
 	   
 	   public function getListPeople()
 	   {
-		   foreach($this->people as $people){
-		   echo $people->getName() ;
-		   echo "\r\n";
-		   echo $people->getAge();
-		   echo "<br>";
-		   
-		   }
+		   return $this->people;
 	   }
 	   
 	   

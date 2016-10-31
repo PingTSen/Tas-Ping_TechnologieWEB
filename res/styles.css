@@ -48,21 +48,24 @@ a:hover.button{
 .nextR
 {
 	text-indent:30px;
-	
 }
 
 /*'Annuler' button*/
 .cancelR
 {
 	text-indent:30px;
-	
 }
 
 .beforePage
 {
 	text-indent:30px;
-	
 }
+
+.confirme
+{
+    	text-indent:30px;
+}
+
 /*The beige box on the center*/
 #container
 {
@@ -110,5 +113,10 @@ body
  /*text-align: center; */ 
 }
 
+tr /* Toutes les cellules des tableaux... */
+{
 
+    border: 1px solid black; /* auront une bordure de 1px */
+
+}
 

@@ -44,6 +44,8 @@ if (isset($_POST['nextR'])) {
 		$reservation->setDestination($destination);
 		if(isset($_POST['insurance'])){
 			$reservation->setIsInsured(true);
+		}else{
+			$reservation->setIsInsured(false);
 		}
 	    $_SESSION['reservation'] = serialize($reservation);		
 		$detail = new detail($reservation->getNumberOfPlaces());
@@ -81,6 +83,7 @@ if (isset($_POST['nextR'])) {
 			
 			$detail->createPeople($listName,$listAge);
 			$_SESSION['detail'] = serialize($detail);
+			$_SESSION['reservation'] = serialize($reservation);
 			$step=3;
 			
 		}else {
@@ -99,7 +102,7 @@ if (isset($_POST['nextR'])) {
 		$step=1;
 	
 }elseif (isset($_POST['validate'])){
-	
+		$step=3;
 	
 }
 
@@ -120,9 +123,9 @@ switch ($step){
 	case 3 :
 		     $reservation = unserialize($_SESSION['reservation']);
 		     $detail = unserialize($_SESSION['detail']);
-			 $detail->getListPeople();
-			 echo $reservation->getIsInsured();
-	
+			// $detail->getListPeople();
+			// echo $reservation->getIsInsured();
+			 include 'validationView.php';
 	;break;
 
 	
