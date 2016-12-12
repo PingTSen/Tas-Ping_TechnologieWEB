@@ -6,12 +6,11 @@
                 <h1>     LISTE DES RESERVATIONS   </h1>
         </head>
         <body>
-            <form name="rsv" method="post" action="controls_manager.php">
             <a href="#" class="button">
                 <label>
-                    <span class="addReserv" > <!-- a rajouter dans CSS-->
+                    <span class="ajoutReserv" > <!-- a rajouter dans CSS-->
                         Add a reservation
-                        <input type="submit" name = 'addReserv'  style="display:none" />
+                        <input type="submit" name = 'ajoutReserv'  style="display:none" />
                     </span>
                 </label>
             </a>
@@ -27,9 +26,7 @@
                     <th>Nom - Age</th>
                     <th>Editer</th>
                     <th>Supprimer</th>
-
-
-                </tr>
+                </tr>    
                 <!-- Contenu de la table -->
                                
                 <?php
@@ -50,32 +47,7 @@
                             echo "<td>".$line['Assurance']."</td>";
                             echo "<td>".$line['Total']."</td>";
                             echo "<td>".$line['Nom - Age']."</td>";
-                          
-
-                            echo ' <td>
-                            <a href="#" class="button">
-                                <label >
-                                    <span class="edition"> Edit 
-                                        <input type="submit" name = \'edition[]\'  style="display:none"  />
-                                    </span>
-                                    </label>
-                            </a> </td>';
-                            
-                            echo ' <td>
-                             <a href="#" class="button">
-                                <label >
-                                    <span class="delete"> Delete
-                                        <input type="submit" name = \'delete[]\'  style="display:none"  />
-                                    </span>
-                                    
-                                </label>
-                            </a></td>';
-                              echo "</tr>\n";
-                                ?>  
-                           
-                      </form>
-
-                            <?php
+                            echo "</tr>\n";
                         }
                     }
                         

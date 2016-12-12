@@ -10,7 +10,7 @@
         <body>
             <p> Votre demande à bien été enregistrée. <br></p>
             <p> Merci de bien vouloir verser la somme de </p> 
-			<?php $price = unserialize($_SESSION['price']); echo $price->getPrices();?>
+			<?php $price = unserialize($_SESSION['price']); echo $price->getPrices();echo 'Euro';?>
 			<p>	sur le comptes 000-000000-00 <br></p>
             <form method="post" action="controls.php">
                 <a href="#" class="button">

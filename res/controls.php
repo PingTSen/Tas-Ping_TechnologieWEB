@@ -1,7 +1,7 @@
 <!-- Author : Ping Tian-Sen Anthony & Tas Emine -->
 <?php
   
-session_start();
+//session_start();
 
 include 'reservation.php';
 include 'exception_.php';
@@ -17,6 +17,7 @@ $detail;
 /**
  * Check sesion status.
 */
+
 
 if (!isset($_SESSION["reservation"])) {
 	
@@ -49,12 +50,10 @@ if (isset($_POST['nextR'])) {
 			$reservation->setIsInsured(false);
 		}
 	    $_SESSION['reservation'] = serialize($reservation);		
+		
 		$detail = new detail($reservation->getNumberOfPlaces());
 		$_SESSION['detail'] = serialize($detail);
-		
-		
-
-		
+				
 		$step = 2;  
     
 	}else {
@@ -103,6 +102,7 @@ if (isset($_POST['nextR'])) {
 	
 }elseif (isset($_POST['validate'])){
 	
+	
 	$step=4;
 	
 	
@@ -112,6 +112,30 @@ if (isset($_POST['nextR'])) {
 		$step=2;
 	
 }
+elseif (isset ($_POST['edition'])){
+	
+	$step=1;
+	
+}elseif(isset($_POST['delete'])){
+	
+	
+	
+}
+elseif (isset($_POST['addReserv'])){
+	
+	$step=1;
+	
+}
+elseif (isset($_POST['confirme'])){
+/* $query = "INSERT INTO reservation (Destination, Assurance, Total, Nom - Age)";
+$query .= "VALUES(".$reservation->getDestination().","
+.$reservation->getIsInsured().","
+.$v.","
+.$detail->getListPeople().")";
+
+$result = $mySqli->query($query) or die ("Query failed"); */
+				
+}
 
 $_SESSION['step'] = serialize($step);
 
@@ -120,6 +144,7 @@ switch ($step){
 	case 1 : 
 	
 	include 'main.php';
+	
 	break;
 	
 	case 2 :
@@ -128,9 +153,10 @@ switch ($step){
 		;break;
 		
 	case 3 :
-		     $reservation = unserialize($_SESSION['reservation']);
-		     $detail = unserialize($_SESSION['detail']);
-			 include 'validationView.php';
+	
+		$reservation = unserialize($_SESSION['reservation']);
+		$detail = unserialize($_SESSION['detail']);
+		include 'validationView.php';
 	
 	;break;
 
@@ -140,6 +166,7 @@ switch ($step){
     $reservation = unserialize($_SESSION['reservation']);
   	$val->calculate($detail->getListPeople());
 	$val->isInssured($reservation->getIsInsured());
+	$val->getPrices();
 	$_SESSION['price'] = serialize($val);		
 	include 'confirmationView.php';
 	;break;

@@ -17,12 +17,12 @@
                <p> </p>
                <p> </p><br>
                <div id="container"> 
-               <form method="post" action="controls.php">
+               <form method="post" action="index">
 			
                     <?php 
 					$listPeople=$detail->getListPeople();
 					$name = " ";
-					$age=0;
+					$age=1;
 					for($i=0; $i<$reservation->getNumberOfPlaces(); $i++)
                           {
 							  if($listPeople != null){

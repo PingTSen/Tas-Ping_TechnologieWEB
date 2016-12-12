@@ -27,7 +27,7 @@
 				?>
 				
 				
-				<form method="post" action="controls.php">
+				<form method="post" action="index">
 				<a href="#" class="button">
 				<label>
 						<span class="confirme" >
