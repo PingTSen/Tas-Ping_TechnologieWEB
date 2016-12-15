@@ -17,8 +17,9 @@
                <p> </p>
                <p> </p><br>
                <div id="container"> 
-               <form method="post" action="index">
-			
+               <form method="post" action="index.php">
+					<input type="hidden" name="page" value="controls" />
+					<input type="hidden" name="check" value="ok" />
                     <?php 
 					$listPeople=$detail->getListPeople();
 					$name = " ";

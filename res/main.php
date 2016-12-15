@@ -22,8 +22,9 @@
                 <p> Le prix de la place est de 10 euros jusqu'à 12 ans et ensuite de 15 euros.</p>
                 <p> Le prix de l'assurance annulation est de 20 euros quel que soit le nombre de voyageurs.</p><br>
                 <div id="container"> 
-                <form name="rsv" method="post" action="index">
-				
+                <form name="rsv" method="post" action="index.php">
+				        <input type="hidden" name="page" value="controls" />
+						 <input type="hidden" name="check" value="ok" />
                         <label for="destination">   Destination          :</label> 
 						<input type="text" name="destination" 
 						value="<?php echo htmlspecialchars($reservation->getDestination()); ?>" / >      <br>  
