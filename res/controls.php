@@ -13,7 +13,6 @@ include 'validateModel.php';
 $exception = new exception_;
 $step=1;
 $detail;
-
 /**
  * Check sesion status.
 */
@@ -118,8 +117,15 @@ elseif (isset ($_POST['edition'])){
 	
 }elseif(isset($_POST['delete'])){
 	
-	
-	
+	$sql = "DELETE FROM `reservation` 
+			WHERE `id` = '$idDelete'";
+			
+	if($mysqli->query($sql) === TRUE){
+		echo "Record delete successfully";
+		$id_insert = $mysqli->insert_id;
+	}else{
+		echo "Error deleting record: ".$mysqli->error;
+	}
 }
 elseif (isset($_POST['addReserv'])){
 	
@@ -127,14 +133,43 @@ elseif (isset($_POST['addReserv'])){
 	
 }
 elseif (isset($_POST['confirme'])){
-/* $query = "INSERT INTO reservation (Destination, Assurance, Total, Nom - Age)";
-$query .= "VALUES(".$reservation->getDestination().","
-.$reservation->getIsInsured().","
-.$v.","
-.$detail->getListPeople().")";
+	$i=0;
+	$peopleString='';
+	$price= unserialize($_SESSION['price']);
+	$prices = $price->getPrices();
+	$detail = unserialize($_SESSION['detail']);
+	
+ 	for($i = 0; $i<$reservation->getNumberOfPlaces(); $i++){
+		$people = $detail->getListPeople()[$i];
 
-$result = $mySqli->query($query) or die ("Query failed"); */
-				
+		$peopleString.= $people->getName();
+		$peopleString.= ' - '.$people->getAge();
+		$peopleString.="\n";
+	}
+	$dest = $reservation->getDestination();
+	$insur= $reservation->getIsInsured();
+ 
+	$mysqli = new mysqli("localhost", "root", "","reservation") or die("Could not select database");
+        
+	if ($mysqli->connect_errno) {
+        echo "Echec lors de la connexion à MySQL : (" . $mysqli->connect_errno . ")".$mysqli->connect_error;
+    }
+/*
+$sql = "INSERT INTO `reservation` (`Destination`, `Assurance`, `Total`, `Nom - Age`) 
+		VALUES('Maneke2','Yes','5','Ping');";
+ */
+	$sql = "INSERT INTO `reservation` (`Destination`, `Assurance`, `Total`, `Nom - Age`)
+			  VALUES( '$dest' , '$insur' , '$prices' , '$peopleString' );";
+	
+	//$result = $mySqli->query($sql) or die ("Query failed"); 
+		
+	if($mysqli->query($sql) === TRUE){
+		echo "Record updated successfully";
+		$id_insert = $mysqli->insert_id;
+	}else{
+		echo "Error inserting record: ".$mysqli->error;
+	}
+	
 }
 
 $_SESSION['step'] = serialize($step);
