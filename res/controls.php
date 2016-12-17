@@ -13,6 +13,7 @@ include 'validateModel.php';
 $exception = new exception_;
 $step=1;
 $detail;
+
 /**
  * Check sesion status.
 */
@@ -28,6 +29,7 @@ if (!isset($_SESSION["reservation"])) {
     $reservation = unserialize($_SESSION['reservation']);
 	//$detail = unserialize($_SESSION['detail']);
 }
+
 
 
 /**
@@ -113,19 +115,12 @@ if (isset($_POST['nextR'])) {
 }
 elseif (isset ($_POST['edition'])){
 	
-	$step=1;
+	echo $_GET['edition'];
 	
 }elseif(isset($_POST['delete'])){
 	
-	$sql = "DELETE FROM `reservation` 
-			WHERE `id` = '$idDelete'";
-			
-	if($mysqli->query($sql) === TRUE){
-		echo "Record delete successfully";
-		$id_insert = $mysqli->insert_id;
-	}else{
-		echo "Error deleting record: ".$mysqli->error;
-	}
+	
+	
 }
 elseif (isset($_POST['addReserv'])){
 	
@@ -133,43 +128,51 @@ elseif (isset($_POST['addReserv'])){
 	
 }
 elseif (isset($_POST['confirme'])){
-	$i=0;
-	$peopleString='';
-	$price= unserialize($_SESSION['price']);
-	$prices = $price->getPrices();
-	$detail = unserialize($_SESSION['detail']);
 	
- 	for($i = 0; $i<$reservation->getNumberOfPlaces(); $i++){
-		$people = $detail->getListPeople()[$i];
-
-		$peopleString.= $people->getName();
-		$peopleString.= ' - '.$people->getAge();
-		$peopleString.="\n";
+	
+	if (!isset($_SESSION["sql"])) {
+	echo 'data';
+    $mySqli = new mysqli("localhost","root","","reservation") or die ("Could not select database");
+	if($mySqli->connect_errno){
+		echo 'Connection failed : ('.$mySqli -> connect_errno . ')' . $mySqli->connect_errno;
 	}
-	$dest = $reservation->getDestination();
-	$insur= $reservation->getIsInsured();
- 
-	$mysqli = new mysqli("localhost", "root", "","reservation") or die("Could not select database");
-        
-	if ($mysqli->connect_errno) {
-        echo "Echec lors de la connexion à MySQL : (" . $mysqli->connect_errno . ")".$mysqli->connect_error;
-    }
-/*
-$sql = "INSERT INTO `reservation` (`Destination`, `Assurance`, `Total`, `Nom - Age`) 
-		VALUES('Maneke2','Yes','5','Ping');";
- */
-	$sql = "INSERT INTO `reservation` (`Destination`, `Assurance`, `Total`, `Nom - Age`)
-			  VALUES( '$dest' , '$insur' , '$prices' , '$peopleString' );";
-	
-	//$result = $mySqli->query($sql) or die ("Query failed"); 
 		
-	if($mysqli->query($sql) === TRUE){
-		echo "Record updated successfully";
-		$id_insert = $mysqli->insert_id;
-	}else{
-		echo "Error inserting record: ".$mysqli->error;
+}
+$peopleString='';
+$isInsured='FALSE';
+$dest = $reservation->getDestination();
+$insur= $reservation->getIsInsured();
+$v= unserialize($_SESSION['price']);
+$detail = unserialize($_SESSION['detail']);
+$tot=$v->getPrices();
+$p = $detail->getListPeople()[0];
+
+
+for($i = 0; $i<$reservation->getNumberOfPlaces(); $i++){
+			$people = $detail->getListPeople()[$i];
+
+			$peopleString.= $people->getName();
+			$peopleString.= ' - '.$people->getAge();
+			$peopleString.="\n<br>";
+}
+
+if($insur){
+	$isInsured='TRUE';
+}
+
+if($stmt = $mySqli->prepare ("INSERT INTO `reservation` (`Destination`, `Assurance`, `Total`, `Nom - Age`) VALUES (?,?,?,?)")){
+	$stmt -> bind_param("ssis", $dest, $isInsured, $tot, $peopleString);
+	if (!$stmt -> execute()){
+		
+		echo $stmt->error;
+		
 	}
 	
+}else {
+	
+	echo $mySqli->error;
+}
+				
 }
 
 $_SESSION['step'] = serialize($step);
@@ -185,7 +188,7 @@ switch ($step){
 	case 2 :
 	
 		include 'detailView.php';		
-		;break;
+	;break;
 		
 	case 3 :
 	
@@ -196,6 +199,7 @@ switch ($step){
 	;break;
 
 	case 4: 
+
 	$val = new validate;
     $detail = unserialize($_SESSION['detail']);
     $reservation = unserialize($_SESSION['reservation']);

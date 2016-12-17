@@ -29,7 +29,6 @@
 				
 				<form method="post" action="index.php">
 				<input type="hidden" name="page" value="controls" />
-				<input type="hidden" name="check" value="ok" />
 				<a href="#" class="button">
 				<label>
 						<span class="confirme" >

@@ -12,7 +12,8 @@
             <p> Merci de bien vouloir verser la somme de </p> 
 			<?php $price = unserialize($_SESSION['price']); echo $price->getPrices();echo 'Euro';?>
 			<p>	sur le comptes 000-000000-00 <br></p>
-            <form method="post" action="controls.php">
+            <form method="post" action="index.php">
+				<input type="hidden" name="page" value="controls" />
                 <a href="#" class="button">
                     <label>
 						<span class="confirme">

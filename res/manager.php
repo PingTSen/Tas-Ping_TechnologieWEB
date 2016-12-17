@@ -48,7 +48,7 @@
                             echo "<td>".$line['Destination']."</td>";
                             echo "<td>".$line['Assurance']."</td>";
                             echo "<td>".$line['Total']."</td>";
-                            echo "<td>".$line['NA']."</td>";
+                            echo "<td>".$line['Nom - Age']."</td>";
 							echo "<td><form method=/'post/' action='index.php'>
 								 <a href=/'#/' class=/'button/'>
 								<label>
