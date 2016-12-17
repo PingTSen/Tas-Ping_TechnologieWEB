@@ -43,33 +43,37 @@
                         $result = $mysqli->query($query) or die("Query failed ");
                         while ($line = $result->fetch_array(MYSQLI_ASSOC))
                         {
+							$id=$line['Id'];
                             echo "</tr>\n";
                             echo "<td>".$line['Id']."</td>";
                             echo "<td>".$line['Destination']."</td>";
                             echo "<td>".$line['Assurance']."</td>";
                             echo "<td>".$line['Total']."</td>";
-                            echo "<td>".$line['Nom - Age']."</td>";
-							echo "<td><form method=/'post/' action='index.php'>
-								 <a href=/'#/' class=/'button/'>
+                            echo "<td>".$line['NomAge']."</td>";
+							echo "<td><form method='post' action='index.php'>
+								 <a href='#' class=/'button/'>
 								<label>
 								<span class=/'Edition/' > <!-- a rajouter dans CSS-->
 								Editer
-								<input type='submit' name = 'edition'  style='display:none 'value='chiiffre' />
+								<input type='submit' name = 'edition'  style='display:none 'value=$id />
 								<input type='hidden' name='page' value='controls' />
 								</span>
 								</label>
 								</a>
 								</form></td>";
-							echo "<td><form method=/'post/' action=/'index.php/'>
-							 <a href=/'#/' class=/'button/'>
-							<label>
-							<span class=/'Delete/' > <!-- a rajouter dans CSS-->
-							Supprimer
-							<input type='submit' name = 'delete'  style='display:none' />
-							</span>
-							</label>
-							</a>
-							</form></td>";
+							echo "<td>
+								<form method='post' action='index.php'>
+								<a href=# class='button'>
+								<label>
+								<span class='Delete' > <!-- a rajouter dans CSS-->
+								Supprimer
+								<input type='submit' name = 'delete'  style='display:none 'value=$id />
+								<input type='hidden' name='page' value='controls' />
+								</span>
+								</label>
+								</a>
+								</form>
+								</td>";
                             echo "</tr>\n";
 							
                         }

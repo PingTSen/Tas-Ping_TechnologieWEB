@@ -14,6 +14,7 @@ $exception = new exception_;
 $step=1;
 $detail;
 
+
 /**
  * Check sesion status.
 */
@@ -115,28 +116,51 @@ if (isset($_POST['nextR'])) {
 }
 elseif (isset ($_POST['edition'])){
 	
-	echo $_GET['edition'];
+	echo $_POST['edition'];
+	$_SESSION['id'] = serialize($_POST['edition']);
+	
 	
 }elseif(isset($_POST['delete'])){
 	
-	
-	
+	if (!empty($_POST['delete'])){
+		$id= $_POST['delete'];
+	}
+if (!isset($_SESSION["sql"])) {
+    $mySqli = new mysqli("localhost","root","","reservation") or die ("Could not select database");
+	if($mySqli->connect_errno){
+		echo 'Connection failed : ('.$mySqli -> connect_errno . ')' . $mySqli->connect_errno;
+	}
 }
+
+if($stmt = $mySqli->prepare ("Delete FROM `reservation` Where Id = ?")){
+	$stmt -> bind_param("i", $id);
+	if (!$stmt -> execute()){
+		
+		echo $stmt->error;
+		
+	}	
+}else {
+	
+	echo $mySqli->error;
+}
+	header ('Location:index.php?page=manager');	
+}
+
+
 elseif (isset($_POST['addReserv'])){
 	
 	$step=1;
 	
 }
 elseif (isset($_POST['confirme'])){
+	 
 	
 	
-	if (!isset($_SESSION["sql"])) {
-	echo 'data';
+if (!isset($_SESSION["sql"])) {
     $mySqli = new mysqli("localhost","root","","reservation") or die ("Could not select database");
 	if($mySqli->connect_errno){
 		echo 'Connection failed : ('.$mySqli -> connect_errno . ')' . $mySqli->connect_errno;
 	}
-		
 }
 $peopleString='';
 $isInsured='FALSE';
@@ -149,8 +173,8 @@ $p = $detail->getListPeople()[0];
 
 
 for($i = 0; $i<$reservation->getNumberOfPlaces(); $i++){
+	
 			$people = $detail->getListPeople()[$i];
-
 			$peopleString.= $people->getName();
 			$peopleString.= ' - '.$people->getAge();
 			$peopleString.="\n<br>";
@@ -160,18 +184,40 @@ if($insur){
 	$isInsured='TRUE';
 }
 
-if($stmt = $mySqli->prepare ("INSERT INTO `reservation` (`Destination`, `Assurance`, `Total`, `Nom - Age`) VALUES (?,?,?,?)")){
-	$stmt -> bind_param("ssis", $dest, $isInsured, $tot, $peopleString);
-	if (!$stmt -> execute()){
+if(isset($_SESSION["id"])){
+	echo 'edit';
+	$id=unserialize($_SESSION['id']);
+	echo $id;
+	$query="UPDATE `reservation` SET Destination = ?, Assurance=?, Total=?, NomAge=? WHERE Id=?";
+	if($stmt = $mySqli->prepare ("UPDATE reservation SET Destination = ?, Assurance=?, Total=?, NomAge=? WHERE Id=?")){
+		$stmt -> bind_param("ssisi", $dest, $isInsured, $tot, $peopleString,$id);
+		if (!$stmt -> execute()){
+			echo $stmt->error;		
+		}
+		unset($_SESSION['id']);
+	}else {
 		
-		echo $stmt->error;
+		echo $mySqli->error;
+		}		
 		
+}else{
+	echo 'norm';
+	$query="INSERT INTO `reservation` (`Destination`, `Assurance`, `Total`, `NomAge`) VALUES (?,?,?,?)";
+	if($stmt = $mySqli->prepare ($query)){
+	$stmt -> bind_param("ssis", $dest, $isInsured, $tot, $peopleString);		
+		if (!$stmt -> execute()){
+			
+			echo $stmt->error;
+			
+			
+		}
+	}else {
+		
+		echo $mySqli->error;
 	}
-	
-}else {
-	
-	echo $mySqli->error;
 }
+
+
 				
 }
 

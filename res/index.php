@@ -4,16 +4,13 @@
   
 session_start();
 
-
-
-	if (!empty($_GET['page']) && is_file($_GET['page'].'.php')){
-	
+if (!empty($_GET['page']) && is_file($_GET['page'].'.php')){
 		include $_GET['page'].'.php';
 	
-	}else {
+}else {
 		
-		include 'controls.php';	
-	}
+	include 'controls.php';	
+}
 
 
 ?>
