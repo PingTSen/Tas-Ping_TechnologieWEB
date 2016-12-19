@@ -186,7 +186,6 @@ if($insur){
 
 if(isset($_SESSION["id"])){
 	$id=unserialize($_SESSION['id']);
-	echo $id;
 	$query="UPDATE `reservation` SET Destination = ?, Assurance=?, Total=?, NomAge=? WHERE Id=?";
 	if($stmt = $mySqli->prepare ("UPDATE reservation SET Destination = ?, Assurance=?, Total=?, NomAge=? WHERE Id=?")){
 		$stmt -> bind_param("ssisi", $dest, $isInsured, $tot, $peopleString,$id);
