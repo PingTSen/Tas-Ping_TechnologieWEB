@@ -14,9 +14,9 @@
 }
 
 
-h1
+h1, h2
 {
-	color: #006A5C;
+	color: #B52135;
 	font-family: Impact;
     font-family: 'Sketch_Block', Arial, serif;
 	font-size: 60px;
@@ -24,38 +24,44 @@ h1
 	
 }
 
+
 a.button{
-	background:url(picture/go.gif);*/
-	display:block;
-	color:#000000;
-	font-weight:bold;
-	height:30px;
-	line-height:29px;
-	margin-bottom:24px;
-	margin-right: 70px;
-	text-decoration:none;
-	width:100px;
-	font-size :90%;
+	background:url(picture/go.gif);
+	color:#006A5C;
+	line-height:60px;/*Espacement interligne*/
+	font-size :90%;/*Passage av souris*/
+
+   /* margin-left:1cm;
+    margin-right: auto;
+    text-align: center;*/
+
+	display: inline-block;
+           text-align: center;
+
 }
 
 a:hover.button{
-	color:#FE0000;
+	color:#CA243B;
 	/*text-decoration: underline;*/
 	font-size: 100%;
 }
 
-/*The 'next' button*/							
+/*The 'next' button*/
+/*
 .nextR
 {
 	text-indent:30px;
 }
-
+*/
 /*'Annuler' button*/
+/*
 .cancelR
 {
 	text-indent:30px;
 }
 
+*/
+/*
 .beforePage
 {
 	text-indent:30px;
@@ -65,22 +71,31 @@ a:hover.button{
 {
     	text-indent:30px;
 }
-
+*/
 /*The beige box on the center*/
 #container
 {
-    padding: 10px;
+    padding: 10px;/*Entoure bien le cadre*/
     /* border: 1px solid #666; */
     background: #ffffBf;
 	border-radius: 15px;
 	font-family: 'Sketch_Block', Arial, serif;
-	font-size: small;
-	box-shadow: 6px 6px 0px #006A5C;
-	text-shadow: 2px 2px 4px #006A5C;
-    opacity: 0.8;
+	font-size: small; /*arrange la taille du texte*/
+	box-shadow: 6px 6px 0px #006A5C;/*contour box*/
+	text-shadow: 2px 2px 4px #006A5C;/*contour text*/
+    opacity: 0.7;
+    width: 25em;/*taille du cadre*/
+    margin-left: auto;
+    margin-right: auto;
+    /*
+    margin-left: auto;
+    margin-right: auto;
+    width: 25em;
+    */
 }
 
 /*For align the text box*/
+
 label
 {
 	display: block;
@@ -92,22 +107,22 @@ label
 section
 {
 	color: black;
-	width: 450px;
+	width: 572px;/*Taille du texte*/
 	margin: auto;
 /*	border-radius: 1px solid black;*/
 	text-align: justify;
-	padding: 12px;
+/*	padding: 12px; */
 	margin-bottom: 20px;
 	margin-top : 90px;
 	font-family: 'Sketch_Block', Arial, serif;
 	font-size: large;
-	text-shadow: 2px 2px 4px #006A5C;
+	text-shadow: 2px 2px 4px #318277;/*floutage text*/
 }
 
 body
 {
 	color:black;
-	background-image:url(picture/pic2.jpg);
+	background-image:url(picture/pic16.jpg);
 	background-size: 100%;
 	margin:0;
  /*text-align: center; */ 
@@ -120,3 +135,17 @@ tr /* Toutes les cellules des tableaux... */
 
 }
 
+
+table {
+     width: 70%;
+    border-radius: 15px;
+ 
+}
+
+td, th {
+    border: thin  outset #CA243B;
+    border-radius: 15px;
+	font-family: 'Sketch_Block', Arial, serif;
+	font-size: small; /*arrange la taille du texte*/
+}
+ 

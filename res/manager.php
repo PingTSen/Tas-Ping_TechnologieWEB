@@ -3,21 +3,23 @@
 
         <head>
             <title>  LISTE DES RESERVATIONS   </title>
-                <h1>     LISTE DES RESERVATIONS   </h1>
+                <h2><center>     Liste des réservations</br> <i><font size=6>[For Manager]</font></i> </center></h2>
+				<link rel="stylesheet" href='styles.css' /> 
         </head>
         <body>
 		<form method="post" action="index.php">
-            <a href="#" class="button">
-                <label>
-                    <span class="ajoutReserv" > <!-- a rajouter dans CSS-->
-                        Add a reservation
-                        <input type="submit" name = 'ajoutReserv'  style="display:none" />
-                    </span>
-                </label>
-            </a>
+			<center>
+				<a href="#" class="button">
+				<label>
+							 Add a reservation
+							<input type="submit" name = 'ajoutReserv'  style="display:none" />
+				</label>
+				</a>
+			</center>
 		</form>
             <br>
             <!-- Création du tableau-->
+			<center>
             <table>
                 <tr>
                 <!-- Les colonnes-->
@@ -52,26 +54,26 @@
                             echo "<td>".$line['NomAge']."</td>";
 							echo "<td><form method='post' action='index.php'>
 								 <a href='#' class=/'button/'>
-								<label>
-								<span class=/'Edition/' > <!-- a rajouter dans CSS-->
-								Editer
-								<input type='submit' name = 'edition'  style='display:none 'value=$id />
-								<input type='hidden' name='page' value='controls' />
-								</span>
-								</label>
-								</a>
+									<label>
+										<span class=/'Edition/' > <!-- a rajouter dans CSS-->
+											Editer
+											<input type='submit' name = 'edition'  style='display:none 'value=$id />
+											<input type='hidden' name='page' value='controls' />
+										</span>
+										</label>
+									</a>
 								</form></td>";
 							echo "<td>
 								<form method='post' action='index.php'>
-								<a href=# class='button'>
-								<label>
-								<span class='Delete' > <!-- a rajouter dans CSS-->
-								Supprimer
-								<input type='submit' name = 'delete'  style='display:none 'value=$id />
-								<input type='hidden' name='page' value='controls' />
-								</span>
-								</label>
-								</a>
+									<a href=# class='button'>
+										<label>
+											<span class='Delete' > <!-- a rajouter dans CSS-->
+												Supprimer
+												<input type='submit' name = 'delete'  style='display:none 'value=$id />
+												<input type='hidden' name='page' value='controls' />
+											</span>
+										</label>
+									</a>
 								</form>
 								</td>";
                             echo "</tr>\n";
@@ -81,6 +83,7 @@
                         
                  ?>
 
-            </table>   
+            </table>
+			</center>>
         </body>
 </html>

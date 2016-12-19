@@ -116,7 +116,7 @@ if (isset($_POST['nextR'])) {
 }
 elseif (isset ($_POST['edition'])){
 	
-	echo $_POST['edition'];
+	
 	$_SESSION['id'] = serialize($_POST['edition']);
 	
 	
@@ -185,7 +185,6 @@ if($insur){
 }
 
 if(isset($_SESSION["id"])){
-	echo 'edit';
 	$id=unserialize($_SESSION['id']);
 	echo $id;
 	$query="UPDATE `reservation` SET Destination = ?, Assurance=?, Total=?, NomAge=? WHERE Id=?";
@@ -201,7 +200,6 @@ if(isset($_SESSION["id"])){
 		}		
 		
 }else{
-	echo 'norm';
 	$query="INSERT INTO `reservation` (`Destination`, `Assurance`, `Total`, `NomAge`) VALUES (?,?,?,?)";
 	if($stmt = $mySqli->prepare ($query)){
 	$stmt -> bind_param("ssis", $dest, $isInsured, $tot, $peopleString);		

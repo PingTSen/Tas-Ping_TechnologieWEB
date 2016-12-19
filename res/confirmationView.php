@@ -4,7 +4,7 @@
         <meta charset="UTF-8"/>
 		<head>
             <title>  CONFIRMATION DES RESERVATIONS   </title>
-            <h1>     CONFIRMATION DES RESERVATIONS   </h1>
+            <h2><center>     Confirmations des réservations   </center></h2>
 			<link rel="stylesheet" href='styles.css' />
         </head>
         <body>
@@ -22,6 +22,6 @@
 						</span>
                     </label>
 				</a>
-            </form>>
+            </form>
         </body>
 </html>
