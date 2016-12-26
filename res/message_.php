@@ -1,32 +1,40 @@
+<!-- Author : Ping Tian-Sen Anthony & Tas Emine -->
+
 <?php
 
-/* Message class
-this class create and modify message */
+/* Message class.
+   This class create and modify message. */
 
 class message_{
 	
 	private $message;
-	
-	
-	public function __construct($mess){
 		
-		$this->message=$mess;
-		
+	/**
+	*Constructor
+	*@param mess, the message
+	*/	
+	public function __construct($mess){		
+		$this->message=$mess;		
 	}
 	
-	public function getMessage(){
-		
-		return $this->message;
-		
+	/**
+	*Getter of the message
+	*@return the message
+	*/
+	
+	public function getMessage(){		
+		return $this->message;		
 	}
 	
-	public function setMessage($mess){
-		
-		$this->message=$mess;
-		
+	/**
+	*Setter of the message
+	*@param mess, the new message
+	*/
+	
+	public function setMessage($mess){		
+		$this->message=$mess;		
 	}
-	
-	
+		
 }
 
 ?>

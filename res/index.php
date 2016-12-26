@@ -1,16 +1,14 @@
 <!-- Author : Ping Tian-Sen Anthony & Tas Emine -->
+<!-- Routing function-->
 
 <?php
   
-session_start();
-
-if (!empty($_GET['page']) && is_file($_GET['page'].'.php')){
-		include $_GET['page'].'.php';
-	
-}else {
+		session_start();
 		
-	include 'controls.php';	
-}
-
+		if (!empty($_GET['page']) && is_file($_GET['page'].'.php')){
+				include $_GET['page'].'.php';	
+		}else {		
+			include 'controls.php';	
+		}
 
 ?>
